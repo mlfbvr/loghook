@@ -3,9 +3,17 @@
 Loghook is a web application designed to help users log and manage their fishing catches. The application provides a user-friendly interface for recording details about each catch, including species, weight, location, and date. Users can view their catch history, edit entries, and gain insights into their fishing activities.
 
 ## Layout
-| Header |
-| Content |
-| Footer |
+<table>
+  <tr>
+    <td>Header</td>
+  </tr>
+  <tr>
+    <td>Content</td>
+  </tr>
+  <tr>
+    <td>Footer (optional)</td>
+  </tr>
+</table>
 
 ## Pages
 
