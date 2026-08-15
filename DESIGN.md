@@ -4,9 +4,7 @@ Loghook is a web application designed to help users log and manage their fishing
 
 ## Layout
 | Header |
-| ------ |
 | Content |
-| ------ |
 | Footer |
 
 ## Pages
