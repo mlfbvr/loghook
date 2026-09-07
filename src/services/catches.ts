@@ -1,6 +1,5 @@
 import type { Catch } from '@/data/schema';
-import CatchesRepository from '@/repositories/repository.json';
-import { v4 as uuidv4 } from 'uuid';
+import CatchesRepository from '@/repositories/repository.mysql';
 
 class CatchesService {
   private catches: Catch[] = [];
@@ -17,19 +16,15 @@ class CatchesService {
     }
   }
 
-  private async saveCatches() {
-    await this.repository.saveAll(this.catches);
-  }
-
   public async getAllCatches(): Promise<Catch[]> {
     await this.loadCatches();
     return this.catches;
   }
 
   public async addCatch(newCatch: Catch): Promise<void> {
-    await this.loadCatches();
-    this.catches.push({ id: uuidv4(), ...newCatch });
-    this.saveCatches();
+    console.log('addCatch called with newCatch:', newCatch);
+    await this.repository.saveOne(newCatch);
+    this.catches.push(newCatch);
   }
 }
 
