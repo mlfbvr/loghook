@@ -21,7 +21,8 @@ const NewCatchPage = () => {
     register,
     handleSubmit,
     setValue,
-    formState: { errors, isSubmitting },
+    reset,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<CatchFormData>({
     mode: 'all',
     resolver: zodResolver(CatchSchema),
@@ -44,9 +45,9 @@ const NewCatchPage = () => {
     }
   }, [setValue]);
 
-  const onSubmit = async (data: CatchFormData, event: any) => {
+  const onSubmit = async (data: CatchFormData) => {
     await saveCatch(data);
-    event.target.reset();
+    reset();
   };
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -216,6 +217,7 @@ const NewCatchPage = () => {
               </ul>
             </div>
           )}
+          {isSubmitSuccessful && <p className="mt-4 text-green-500">Form submitted successfully!</p>}
         </div>
       </main>
     </div>

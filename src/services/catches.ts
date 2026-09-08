@@ -1,5 +1,5 @@
 import type { Catch } from '@/data/schema';
-import CatchesRepository from '@/repositories/repository.mysql';
+import CatchesRepository from '@/repositories/catches.repository.mysql';
 
 class CatchesService {
   private catches: Catch[] = [];
@@ -22,7 +22,6 @@ class CatchesService {
   }
 
   public async addCatch(newCatch: Catch): Promise<void> {
-    console.log('addCatch called with newCatch:', newCatch);
     await this.repository.saveOne(newCatch);
     this.catches.push(newCatch);
   }

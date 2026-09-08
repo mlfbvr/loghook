@@ -1,5 +1,5 @@
 import type { Catch } from '@/data/schema';
-import { Repository } from './repository';
+import { Repository } from './catches.repository';
 import mysql from 'mysql2/promise';
 
 class MySQLRepository implements Repository<Catch> {
@@ -7,10 +7,11 @@ class MySQLRepository implements Repository<Catch> {
 
   constructor() {
     this.dbConnection = mysql.createPool({
-      host: '',
-      user: '',
-      password: '',
-      database: '',
+      host: process.env.MYSQL_HOST || '',
+      user: process.env.MYSQL_USER || '',
+      password: process.env.MYSQL_PASSWORD || '',
+      database: process.env.MYSQL_DATABASE || '',
+      port: parseInt(process.env.MYSQL_PORT || '3306', 10),
     });
   }
 
